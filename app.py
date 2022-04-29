@@ -31,7 +31,7 @@ def upload_file():
             os.makedirs(path)
             file.save(os.path.join(path, app.config["UPLOAD_FILENAME"]))
 
-            subprocess.Popen(['python', 'track.py', '--uuid', file_id])
+            subprocess.Popen(['python', 'track.py', '--uuid', file_id]).wait()
 
             return file_id
 
@@ -40,8 +40,6 @@ def upload_file():
 
 @app.route('/uploads/<name>')
 def download_file(name):
-    print(app.config["UPLOAD_FOLDER"])
-    print(name+".mp4")
     folder = os.path.join(app.config["UPLOAD_FOLDER"], name)
     return send_from_directory(folder, app.config['DOWNLOAD_FILENAME'])
 
