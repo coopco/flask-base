@@ -1,6 +1,5 @@
 import os
 from argparse import ArgumentParser
-from shutil import rmtree
 
 parser = ArgumentParser()
 parser.add_argument("-u", "--uuid", dest="uuid")
